@@ -1,0 +1,17 @@
+#title-div {
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 25px;
+  animation: 1s ease-in-out showTitle;
+}
+
+.title {
+  color: var(--palletecolor);
+  font-size: 35px;
+  font-weight: bolder;
+  text-decoration: solid;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
