@@ -8,14 +8,16 @@ const fill = document.getElementById("fill");
 const erase = document.getElementById("erase");
 const refresh = document.getElementById("refresh");
 const fileInput = document.getElementById("file");
-const text = document.getElementById("text");
+const textInput = document.getElementById("text");
+const textSize = document.getElementById("textSizes");
+const textType = document.getElementById("textTypes");
+const textWeight = document.getElementById("textWeights");
 const save = document.getElementById("save");
 
-const CANVAS_DEFAULT = 500;
+const CANVAS_WIDTH = 650;
+const CANVAS_HEIGHT = 660;
 const ERASE_COLOR = "#ffffff";
 
-canvas.width = CANVAS_DEFAULT;
-canvas.height = CANVAS_DEFAULT;
 ctx.lineWidth = 5;
 ctx.lineCap = "round";
 
@@ -76,7 +78,7 @@ function onEraseMode() {
 
 function onRefreshMode() {
   ctx.fillStyle = ERASE_COLOR;
-  ctx.fillRect(0, 0, CANVAS_DEFAULT, CANVAS_DEFAULT);
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   color.value = ERASE_COLOR;
 }
 
@@ -86,18 +88,19 @@ function onFileUpload(event) {
   const image = new Image();
   image.src = url;
   image.onload = function () {
-    ctx.drawImage(image, 0, 0, CANVAS_DEFAULT, CANVAS_DEFAULT);
+    ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     fileInput.value = null;
   };
 }
 
 function onTextInput(event) {
-  const textInput = text.value;
-  if (textInput !== "") {
+  const text = textInput.value;
+  const size = textSize.value;
+  if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = "68px 'Press Start 2p'";
-    ctx.fillText(textInput, event.offsetX, event.offsetY);
+    ctx.font = `${size}px sans-serif`;
+    ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
 }
