@@ -96,10 +96,13 @@ function onFileUpload(event) {
 function onTextInput(event) {
   const text = textInput.value;
   const size = textSize.value;
+  const type = textType.value;
+  const weight = textWeight.value;
+
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = `${size}px sans-serif`;
+    ctx.font = `${weight} ${size}px ${type}`;
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
